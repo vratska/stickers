@@ -24,3 +24,9 @@ jobs:
       run: chmod +x Android/gradlew
     - name: Build with Gradle
       run: ./Android/gradlew build
+    - name: Upload build artifact
+      if: runner.os == 'Linux'
+      uses: actions/upload-artifact@v2
+      with:
+          name: ${{ github.sha }}
+          path: out
